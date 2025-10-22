@@ -12,9 +12,9 @@ export interface OpenApi {
 interface Path{
  'get': Get
  'post': Post
- 'patch': any
- 'put': any
- 'delete': any
+ 'patch': Patch
+ 'put': Put
+ 'delete': Delete
 }
 interface Parameter {
     in: string
@@ -94,6 +94,7 @@ interface Post {
     requestBody: RequestBody
     responses: { [responses in ResponseCode]: Response }
 }
+
 interface Patch {
     tags: string[]
     summary: string
@@ -101,5 +102,25 @@ interface Patch {
     operationId: string
     parameters: any[]
     requestBody: any
-    responses: any
+    responses: { [responses in ResponseCode]: Response }
+}
+
+interface Put {
+    tags: string[]
+    summary: string
+    description: string
+    operationId: string
+    parameters: any[]
+    requestBody: any
+    responses: { [responses in ResponseCode]: Response }
+}
+
+interface Delete {
+    tags: string[]
+    summary: string
+    description: string
+    operationId: string
+    parameters: any[]
+    requestBody: any
+    responses: { [responses in ResponseCode]: Response }
 }

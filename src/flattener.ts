@@ -62,7 +62,43 @@ dereference(input, {}, (err: Error | null, schema: JSONSchema | undefined) => {
                 Object.entries(path.post.responses).forEach(([key, response]) => {
                     mergeResponse(key, response);
                 })
+                if (typeof path.post.requestBody === 'undefined') {
+                    return;
+                }
                 mergeRequestBody(path.post.requestBody)
+            }
+
+            if (path.patch) {
+                console.log('PATCH')
+                Object.entries(path.patch.responses).forEach(([key, response]) => {
+                    mergeResponse(key, response);
+                })
+                if (typeof path.patch.requestBody === 'undefined') {
+                    return;
+                }
+                mergeRequestBody(path.patch.requestBody)
+            }
+
+            if (path.put) {
+                console.log('PUT')
+                Object.entries(path.put.responses).forEach(([key, response]) => {
+                    mergeResponse(key, response);
+                })
+                if (typeof path.put.requestBody === 'undefined') {
+                    return;
+                }
+                mergeRequestBody(path.put.requestBody)
+            }
+
+            if (path.delete) {
+                console.log('DELETE')
+                Object.entries(path.delete.responses).forEach(([key, response]) => {
+                    mergeResponse(key, response);
+                })
+                if (typeof path.delete.requestBody === 'undefined') {
+                    return;
+                }
+                mergeRequestBody(path.delete.requestBody)
             }
         })
         if (openApiSchema.components.schemas)
